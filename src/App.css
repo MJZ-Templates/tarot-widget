@@ -89,7 +89,8 @@
 /* 선택된 카드 배치 */
 .selected-card-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 30px;
   margin-top: 30px;
   position: relative;
 }
@@ -129,9 +130,9 @@
 
 /* 다음으로 버튼 */
 .next-button {
-  display: block;
+  display: flex;
   margin: 20px auto;
-  padding: 10px 20px;
+  padding: 10px 40px;
   font-size: 16px;
   font-weight: bold;
   border: none;
