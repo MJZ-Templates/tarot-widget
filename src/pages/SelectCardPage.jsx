@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Card from "../components/Card";
+import Button from "../components/Button";
 import tarotBackImage from "../assets/images-tarot-cards/tarot-card-back.png";
 import { TAROT_CARD_LIST } from "../utils/tarotUtils";
 
@@ -79,9 +80,12 @@ const SelectCardPage = () => {
           )}
         </SelectedBox>
       </SelectedCardContainer>
-      <NextButton onClick={goToNextPage} disabled={selectedCards.length < 2}>
-        다음으로
-      </NextButton>
+
+      <Button
+        text="다음으로"
+        onClick={goToNextPage}
+        disabled={selectedCards.length < 2}
+      />
     </Container>
   );
 };
@@ -153,18 +157,4 @@ const SelectedCard = styled.img`
   height: 105px;
   object-fit: contain;
   padding: 20px 16px;
-`;
-
-const NextButton = styled.button`
-  display: flex;
-  margin: 20px auto;
-  padding: 10px 40px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  background-color: ${({ disabled }) => (disabled ? "gray" : "blue")};
-  color: white;
-  transition: background-color 0.3s;
 `;

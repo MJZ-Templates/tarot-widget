@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Button from "../components/Button";
 
 const InterpretationPage = () => {
   const navigate = useNavigate();
@@ -35,9 +36,10 @@ const InterpretationPage = () => {
         )}
       </InterpretationContainer>
 
-      <NextButton onClick={handleNext}>
-        {currentStep === 0 ? "다음" : "결과보기"}
-      </NextButton>
+      <Button
+        text={currentStep === 0 ? "다음" : "결과보기"}
+        onClick={handleNext}
+      />
     </Container>
   );
 };
@@ -107,22 +109,4 @@ const CardDescription = styled.p`
   font-size: 14px;
   color: #333;
   line-height: 1.4;
-`;
-
-const NextButton = styled.button`
-  display: flex;
-  margin: 20px auto;
-  padding: 10px 40px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: blue;
-  color: white;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: darkblue;
-  }
 `;

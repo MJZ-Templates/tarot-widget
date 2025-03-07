@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Button from "../components/Button";
 
 const ResultPage = () => {
   const [selectedCards, setSelectedCards] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedCards = JSON.parse(localStorage.getItem("selectedTarotCards"));
@@ -11,41 +14,53 @@ const ResultPage = () => {
     }
   }, []);
 
+  const handleGoHome = () => {
+    navigate("/");
+  };
+
   return (
     <Container>
       <Title>점괘 결과</Title>
       {selectedCards.length === 2 ? (
-        <ResultContainer>
-          <Card>
-            <CardLabel>현재</CardLabel>
-            <CardImage
-              src={selectedCards[0].image}
-              alt={selectedCards[0].name}
-            />
-            <CardTitle>{selectedCards[0].name}</CardTitle>
-            <TagContainer>
-              {selectedCards[0].tag.map((tag, index) => (
-                <Tag key={index}>#{tag}</Tag>
-              ))}
-            </TagContainer>
-            <CardDescription>{selectedCards[0].interpretation}</CardDescription>
-          </Card>
+        <>
+          <ResultContainer>
+            <Card>
+              <CardLabel>현재</CardLabel>
+              <CardImage
+                src={selectedCards[0].image}
+                alt={selectedCards[0].name}
+              />
+              <CardTitle>{selectedCards[0].name}</CardTitle>
+              <TagContainer>
+                {selectedCards[0].tag.map((tag, index) => (
+                  <Tag key={index}>#{tag}</Tag>
+                ))}
+              </TagContainer>
+              <CardDescription>
+                {selectedCards[0].interpretation}
+              </CardDescription>
+            </Card>
 
-          <Card>
-            <CardLabel>미래</CardLabel>
-            <CardImage
-              src={selectedCards[1].image}
-              alt={selectedCards[1].name}
-            />
-            <CardTitle>{selectedCards[1].name}</CardTitle>
-            <TagContainer>
-              {selectedCards[1].tag.map((tag, index) => (
-                <Tag key={index}>#{tag}</Tag>
-              ))}
-            </TagContainer>
-            <CardDescription>{selectedCards[1].interpretation}</CardDescription>
-          </Card>
-        </ResultContainer>
+            <Card>
+              <CardLabel>미래</CardLabel>
+              <CardImage
+                src={selectedCards[1].image}
+                alt={selectedCards[1].name}
+              />
+              <CardTitle>{selectedCards[1].name}</CardTitle>
+              <TagContainer>
+                {selectedCards[1].tag.map((tag, index) => (
+                  <Tag key={index}>#{tag}</Tag>
+                ))}
+              </TagContainer>
+              <CardDescription>
+                {selectedCards[1].interpretation}
+              </CardDescription>
+            </Card>
+          </ResultContainer>
+
+          <Button text="다시 선택하기" onClick={handleGoHome} />
+        </>
       ) : (
         <NoCardMessage>선택한 카드가 없습니다.</NoCardMessage>
       )}
