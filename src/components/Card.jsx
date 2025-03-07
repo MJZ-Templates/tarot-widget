@@ -1,14 +1,14 @@
-// src/components/Card.jsx
 import React from "react";
 
-const Card = ({ card, onSelect, isSelected }) => {
+const Card = ({ backImage, onSelect, isPlaced }) => {
   return (
     <div
-      className={`tarot-card ${isSelected ? "selected" : ""}`}
-      onClick={() => !isSelected && onSelect(card)}
+      className={`card-container ${isPlaced ? "hidden" : ""}`}
+      onClick={onSelect}
     >
-      <img src={`/images-tarot-cards/${card.image}`} alt={card.name} />
-      <p>{card.name}</p>
+      <div className="card">
+        <img src={backImage} alt="타로 카드 뒷면" className="card-back" />
+      </div>
     </div>
   );
 };
