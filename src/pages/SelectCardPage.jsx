@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { toast, ToastContainer } from "react-toastify"; // react-toastify import
+import "react-toastify/dist/ReactToastify.css"; // toast 스타일 import
 import Card from "../components/Card";
 import Button from "../components/Button";
 import tarotBackImage from "../assets/images-tarot-cards/tarot-card-back.png";
@@ -24,11 +26,18 @@ const SelectCardPage = () => {
 
   const selectCard = (card) => {
     if (
-      selectedCards.length < 2 &&
-      !selectedCards.some((c) => c.name === card.name)
+      selectedCards.length >= 2 ||
+      selectedCards.some((c) => c.name === card.name)
     ) {
-      setSelectedCards((prev) => [...prev, card]);
+      if (!toast.isActive("card-toast")) {
+        toast.warn("한번 선택한 카드는 변경할 수 없습니다.", {
+          toastId: "card-toast",
+        });
+      }
+      return;
     }
+
+    setSelectedCards((prev) => [...prev, card]);
   };
 
   useEffect(() => {
@@ -70,13 +79,34 @@ const SelectCardPage = () => {
         <SelectedBox>
           <Label>현재</Label>
           {selectedCards[0] && (
-            <SelectedCard src={tarotBackImage} alt="선택된 타로 카드 뒷면" />
+            <SelectedCard
+              src={tarotBackImage}
+              alt="선택된 타로 카드 뒷면"
+              onClick={() => {
+                if (!toast.isActive("card-toast")) {
+                  toast.warn("한번 선택한 카드는 변경할 수 없습니다.", {
+                    toastId: "card-toast",
+                  });
+                }
+              }}
+            />
           )}
         </SelectedBox>
+
         <SelectedBox>
           <Label>미래</Label>
           {selectedCards[1] && (
-            <SelectedCard src={tarotBackImage} alt="선택된 타로 카드 뒷면" />
+            <SelectedCard
+              src={tarotBackImage}
+              alt="선택된 타로 카드 뒷면"
+              onClick={() => {
+                if (!toast.isActive("card-toast")) {
+                  toast.warn("한번 선택한 카드는 변경할 수 없습니다.", {
+                    toastId: "card-toast",
+                  });
+                }
+              }}
+            />
           )}
         </SelectedBox>
       </SelectedCardContainer>
@@ -86,6 +116,8 @@ const SelectCardPage = () => {
         onClick={goToNextPage}
         disabled={selectedCards.length < 2}
       />
+
+      <ToastContainer position="top-center" autoClose={2000} />
     </Container>
   );
 };
