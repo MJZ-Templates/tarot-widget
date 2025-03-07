@@ -31,6 +31,11 @@ const SelectCardPage = () => {
     <div>
       <h1>타로 카드 선택</h1>
 
+      {/* 추가된 안내 문구 */}
+      <p className="selection-guide">
+        마음 속으로 고민을 생각하며, 신중하게 카드 2장을 선택해주세요.
+      </p>
+
       {/* 카드 선택 영역 */}
       <div className="card-grid">
         {Array.from({ length: 22 }).map((_, index) => (
@@ -46,7 +51,7 @@ const SelectCardPage = () => {
       {/* 선택한 카드 배치 영역 */}
       <div className="selected-card-container">
         <div className="selected-box">
-          <h2>현재</h2>
+          <span className="label">현재</span>
           {selectedCards[0] && (
             <img
               src={tarotBackImage}
@@ -56,7 +61,7 @@ const SelectCardPage = () => {
           )}
         </div>
         <div className="selected-box">
-          <h2>미래</h2>
+          <span className="label">미래</span>
           {selectedCards[1] && (
             <img
               src={tarotBackImage}

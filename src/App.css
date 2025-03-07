@@ -70,11 +70,12 @@
   backface-visibility: hidden;
 }
 
-/* 선택된 카드 배치 */
+/* 선택된 카드 배치 영역 */
 .selected-card-container {
   display: flex;
   justify-content: space-around;
-  margin-top: 20px;
+  margin-top: 30px;
+  position: relative;
 }
 
 .selected-box {
@@ -88,10 +89,54 @@
   border-radius: 10px;
   padding: 10px;
   background: #fff;
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  top: -34px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 10px;
 }
 
 .selected-card {
   width: 100px;
   height: 150px;
   object-fit: cover;
+}
+
+/* 다음으로 버튼 */
+.next-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: gray;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.next-button.active {
+  background-color: blue;
+  cursor: pointer;
+}
+
+.next-button.disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+/* 안내 문구 스타일 */
+.selection-guide {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
