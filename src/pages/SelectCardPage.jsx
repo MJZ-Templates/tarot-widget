@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "../components/Card";
 import tarotBackImage from "../assets/images-tarot-cards/tarot-card-back.png";
 import { TAROT_CARD_LIST } from "../utils/tarotUtils";
 
-const SelectCardPage = ({ onSelectionComplete }) => {
+const SelectCardPage = () => {
   const [selectedCards, setSelectedCards] = useState([]);
+  const navigate = useNavigate();
 
   const selectCard = (card, index) => {
     if (
@@ -18,9 +20,12 @@ const SelectCardPage = ({ onSelectionComplete }) => {
   useEffect(() => {
     if (selectedCards.length === 2) {
       localStorage.setItem("selectedTarotCards", JSON.stringify(selectedCards));
-      setTimeout(onSelectionComplete, 1000); // 1초 후 해석 페이지로 이동
     }
   }, [selectedCards]);
+
+  const goToNextPage = () => {
+    navigate("/interpretation");
+  };
 
   return (
     <div>
@@ -33,7 +38,6 @@ const SelectCardPage = ({ onSelectionComplete }) => {
             key={index}
             backImage={tarotBackImage}
             onSelect={() => selectCard(TAROT_CARD_LIST[index], index)}
-            isSelected={selectedCards.some((c) => c.index === index)}
             isPlaced={selectedCards.some((c) => c.index === index)}
           />
         ))}
@@ -62,6 +66,17 @@ const SelectCardPage = ({ onSelectionComplete }) => {
           )}
         </div>
       </div>
+
+      {/* 다음으로 버튼 */}
+      <button
+        className={`next-button ${
+          selectedCards.length === 2 ? "active" : "disabled"
+        }`}
+        onClick={goToNextPage}
+        disabled={selectedCards.length < 2}
+      >
+        다음으로
+      </button>
     </div>
   );
 };
