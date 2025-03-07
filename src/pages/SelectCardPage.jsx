@@ -36,16 +36,22 @@ const SelectCardPage = () => {
         마음 속으로 고민을 생각하며, 신중하게 카드 2장을 선택해주세요.
       </p>
 
-      {/* 카드 선택 영역 */}
-      <div className="card-grid">
-        {Array.from({ length: 22 }).map((_, index) => (
-          <Card
-            key={index}
-            backImage={tarotBackImage}
-            onSelect={() => selectCard(TAROT_CARD_LIST[index], index)}
-            isPlaced={selectedCards.some((c) => c.index === index)}
-          />
-        ))}
+      {/* 카드 스크롤 영역 */}
+      <div className="card-scroll-container">
+        <div className="card-scroll">
+          {Array.from({ length: 22 }).map((_, index) => (
+            <Card
+              key={index}
+              backImage={tarotBackImage}
+              onSelect={() => selectCard(TAROT_CARD_LIST[index], index)}
+              isPlaced={selectedCards.some((c) => c.index === index)}
+              position={{
+                top: Math.random() * 20 - 10,
+                left: Math.random() * 10 - 5,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       {/* 선택한 카드 배치 영역 */}
