@@ -109,7 +109,6 @@ const CardScrollContainer = styled.div`
   overflow-x: auto;
   white-space: nowrap;
   padding: 10px 0;
-  display: flex;
   justify-content: center;
 `;
 
@@ -133,22 +132,26 @@ const SelectedBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  width: 90px;
+  height: 120px;
+  padding: 10px;
   gap: 6px;
+  border: 2px solid #000;
+  border-radius: 10px;
 `;
 
 const Label = styled.span`
-  display: flex;
+  position: absolute;
+  top: -35px;
   font-size: 16px;
   font-weight: bold;
+  padding: 5px 8px;
 `;
 
 const SelectedCard = styled.img`
   width: 70px;
   height: 105px;
-  object-fit: cover;
-  border: 2px solid #000;
-  border-radius: 10px;
+  object-fit: contain;
   padding: 20px 16px;
 `;
 
