@@ -7,9 +7,9 @@ import { TAROT_CARD_LIST } from "../utils/tarotUtils";
 
 const shuffleArray = (array) => {
   return array
-    .map((item) => ({ ...item, sort: Math.random() }))
+    .map((item) => ({ item, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
-    .map((item) => ({ name: item.name, image: item.image }));
+    .map(({ item }) => item);
 };
 
 const SelectCardPage = () => {
@@ -21,19 +21,26 @@ const SelectCardPage = () => {
     setShuffledCards(shuffleArray(TAROT_CARD_LIST));
   }, []);
 
-  const selectCard = (card, index) => {
+  const selectCard = (card) => {
     if (
       selectedCards.length < 2 &&
-      !selectedCards.some((c) => c.index === index)
+      !selectedCards.some((c) => c.name === card.name)
     ) {
-      setSelectedCards((prev) => [...prev, { ...card, index }]);
+      setSelectedCards((prev) => [...prev, card]);
     }
   };
 
   useEffect(() => {
-    if (selectedCards.length === 2) {
-      localStorage.setItem("selectedTarotCards", JSON.stringify(selectedCards));
-    }
+    const timer = setTimeout(() => {
+      if (selectedCards.length === 2) {
+        localStorage.setItem(
+          "selectedTarotCards",
+          JSON.stringify(selectedCards)
+        );
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, [selectedCards]);
 
   const goToNextPage = () => {
@@ -48,12 +55,12 @@ const SelectCardPage = () => {
       </SelectionGuide>
       <CardScrollContainer>
         <CardScroll>
-          {shuffledCards.map((card, index) => (
+          {shuffledCards.map((card) => (
             <Card
-              key={index}
+              key={card.name}
               backImage={tarotBackImage}
-              onSelect={() => selectCard(card, index)}
-              isPlaced={selectedCards.some((c) => c.index === index)}
+              onSelect={() => selectCard(card)}
+              isPlaced={selectedCards.some((c) => c.name === card.name)}
             />
           ))}
         </CardScroll>
@@ -72,11 +79,7 @@ const SelectCardPage = () => {
           )}
         </SelectedBox>
       </SelectedCardContainer>
-      <NextButton
-        isActive={selectedCards.length === 2}
-        onClick={goToNextPage}
-        disabled={selectedCards.length < 2}
-      >
+      <NextButton onClick={goToNextPage} disabled={selectedCards.length < 2}>
         다음으로
       </NextButton>
     </Container>
@@ -85,7 +88,6 @@ const SelectCardPage = () => {
 
 export default SelectCardPage;
 
-// Styled Components
 const Container = styled.div`
   max-width: 1280px;
   margin: 0 auto;
@@ -165,9 +167,8 @@ const NextButton = styled.button`
   font-weight: bold;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
-  background-color: ${(props) => (props.isActive ? "blue" : "gray")};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  background-color: ${({ disabled }) => (disabled ? "gray" : "blue")};
   color: white;
   transition: background-color 0.3s;
-  cursor: ${(props) => (props.isActive ? "pointer" : "not-allowed")};
 `;
