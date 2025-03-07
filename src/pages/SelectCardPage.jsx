@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { toast, ToastContainer } from "react-toastify"; // react-toastify import
-import "react-toastify/dist/ReactToastify.css"; // toast 스타일 import
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Card from "../components/Card";
 import Button from "../components/Button";
 import tarotBackImage from "../assets/images-tarot-cards/tarot-card-back.png";
@@ -30,7 +30,7 @@ const SelectCardPage = () => {
       selectedCards.some((c) => c.name === card.name)
     ) {
       if (!toast.isActive("card-toast")) {
-        toast.warn("한번 선택한 카드는 변경할 수 없습니다.", {
+        toast.warn("Once a card is selected, it cannot be changed.", {
           toastId: "card-toast",
         });
       }
@@ -59,9 +59,9 @@ const SelectCardPage = () => {
 
   return (
     <Container>
-      <h1>타로 카드 선택</h1>
+      <h1>Select Tarot Cards</h1>
       <SelectionGuide>
-        마음 속으로 고민을 생각하며, 신중하게 카드 2장을 선택해주세요.
+        Think about your concern, and carefully select 2 cards.
       </SelectionGuide>
       <CardScrollContainer>
         <CardScroll>
@@ -77,14 +77,14 @@ const SelectCardPage = () => {
       </CardScrollContainer>
       <SelectedCardContainer>
         <SelectedBox>
-          <Label>현재</Label>
+          <Label>Present</Label>
           {selectedCards[0] && (
             <SelectedCard
               src={tarotBackImage}
-              alt="선택된 타로 카드 뒷면"
+              alt="Selected Tarot Card Back"
               onClick={() => {
                 if (!toast.isActive("card-toast")) {
-                  toast.warn("한번 선택한 카드는 변경할 수 없습니다.", {
+                  toast.warn("Once a card is selected, it cannot be changed.", {
                     toastId: "card-toast",
                   });
                 }
@@ -94,14 +94,14 @@ const SelectCardPage = () => {
         </SelectedBox>
 
         <SelectedBox>
-          <Label>미래</Label>
+          <Label>Future</Label>
           {selectedCards[1] && (
             <SelectedCard
               src={tarotBackImage}
-              alt="선택된 타로 카드 뒷면"
+              alt="Selected Tarot Card Back"
               onClick={() => {
                 if (!toast.isActive("card-toast")) {
-                  toast.warn("한번 선택한 카드는 변경할 수 없습니다.", {
+                  toast.warn("Once a card is selected, it cannot be changed.", {
                     toastId: "card-toast",
                   });
                 }
@@ -112,7 +112,7 @@ const SelectCardPage = () => {
       </SelectedCardContainer>
 
       <Button
-        text="다음으로"
+        text="Next"
         onClick={goToNextPage}
         disabled={selectedCards.length < 2}
       />

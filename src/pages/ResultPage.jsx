@@ -20,12 +20,12 @@ const ResultPage = () => {
 
   return (
     <Container>
-      <Title>점괘 결과</Title>
+      <Title>Results</Title>
       {selectedCards.length === 2 ? (
         <>
           <ResultContainer>
             <Card>
-              <CardLabel>현재</CardLabel>
+              <CardLabel>Present</CardLabel>
               <CardImage
                 src={selectedCards[0].image}
                 alt={selectedCards[0].name}
@@ -40,9 +40,8 @@ const ResultPage = () => {
                 {selectedCards[0].interpretation}
               </CardDescription>
             </Card>
-
             <Card>
-              <CardLabel>미래</CardLabel>
+              <CardLabel>Future</CardLabel>
               <CardImage
                 src={selectedCards[1].image}
                 alt={selectedCards[1].name}
@@ -58,11 +57,10 @@ const ResultPage = () => {
               </CardDescription>
             </Card>
           </ResultContainer>
-
-          <Button text="다시 선택하기" onClick={handleGoHome} />
+          <Button text="Select Again" onClick={handleGoHome} />
         </>
       ) : (
-        <NoCardMessage>선택한 카드가 없습니다.</NoCardMessage>
+        <NoCardMessage>No selected cards.</NoCardMessage>
       )}
     </Container>
   );

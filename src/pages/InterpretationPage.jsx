@@ -22,22 +22,20 @@ const InterpretationPage = () => {
 
   return (
     <Container>
-      <Title>점괘 해석</Title>
+      <Title>{currentStep === 0 ? "Present" : "Future"} Results</Title>
       <InterpretationContainer>
         {currentCard ? (
           <Card>
-            <CardLabel>{currentStep === 0 ? "현재" : "미래"}</CardLabel>
             <CardImage src={currentCard.image} alt={currentCard.name} />
             <CardTitle>{currentCard.name}</CardTitle>
             <CardDescription>{currentCard.description}</CardDescription>
           </Card>
         ) : (
-          <NoCardMessage>선택한 카드가 없습니다.</NoCardMessage>
+          <NoCardMessage>No selected cards.</NoCardMessage>
         )}
       </InterpretationContainer>
-
       <Button
-        text={currentStep === 0 ? "다음" : "결과보기"}
+        text={currentStep === 0 ? "Next" : "See Result"}
         onClick={handleNext}
       />
     </Container>
@@ -79,19 +77,6 @@ const Card = styled.div`
   background-color: #fff;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
   position: relative;
-`;
-
-const CardLabel = styled.div`
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 5px 10px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  border: 1px solid #000;
 `;
 
 const CardImage = styled.img`
