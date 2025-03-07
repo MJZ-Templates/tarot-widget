@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Card from "../components/Card";
@@ -129,34 +129,27 @@ const SelectedCardContainer = styled.div`
 `;
 
 const SelectedBox = styled.div`
-  width: 80px;
-  height: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid #000;
-  border-radius: 10px;
-  padding: 10px;
-  background: #fff;
-  position: relative;
+  padding: 20px;
+  gap: 6px;
 `;
 
 const Label = styled.span`
-  position: absolute;
-  top: -25px;
+  display: flex;
   font-size: 16px;
   font-weight: bold;
-  background: white;
-  padding: 5px 8px;
-  border-radius: 5px;
-  border: 1px solid #000;
 `;
 
 const SelectedCard = styled.img`
   width: 70px;
   height: 105px;
   object-fit: cover;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 20px 16px;
 `;
 
 const NextButton = styled.button`
