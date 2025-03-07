@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import Card from "../components/Card";
 import tarotBackImage from "../assets/images-tarot-cards/tarot-card-back.png";
 import { TAROT_CARD_LIST } from "../utils/tarotUtils";
@@ -14,7 +15,6 @@ const shuffleArray = (array) => {
 const SelectCardPage = () => {
   const [selectedCards, setSelectedCards] = useState([]);
   const [shuffledCards, setShuffledCards] = useState([]);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,15 +41,13 @@ const SelectCardPage = () => {
   };
 
   return (
-    <div>
+    <Container>
       <h1>타로 카드 선택</h1>
-
-      <p className="selection-guide">
+      <SelectionGuide>
         마음 속으로 고민을 생각하며, 신중하게 카드 2장을 선택해주세요.
-      </p>
-
-      <div className="card-scroll-container">
-        <div className="card-scroll">
+      </SelectionGuide>
+      <CardScrollContainer>
+        <CardScroll>
           {shuffledCards.map((card, index) => (
             <Card
               key={index}
@@ -58,43 +56,118 @@ const SelectCardPage = () => {
               isPlaced={selectedCards.some((c) => c.index === index)}
             />
           ))}
-        </div>
-      </div>
-
-      <div className="selected-card-container">
-        <div className="selected-box">
-          <span className="label">현재</span>
+        </CardScroll>
+      </CardScrollContainer>
+      <SelectedCardContainer>
+        <SelectedBox>
+          <Label>현재</Label>
           {selectedCards[0] && (
-            <img
-              src={tarotBackImage}
-              alt="선택된 타로 카드 뒷면"
-              className="selected-card"
-            />
+            <SelectedCard src={tarotBackImage} alt="선택된 타로 카드 뒷면" />
           )}
-        </div>
-        <div className="selected-box">
-          <span className="label">미래</span>
+        </SelectedBox>
+        <SelectedBox>
+          <Label>미래</Label>
           {selectedCards[1] && (
-            <img
-              src={tarotBackImage}
-              alt="선택된 타로 카드 뒷면"
-              className="selected-card"
-            />
+            <SelectedCard src={tarotBackImage} alt="선택된 타로 카드 뒷면" />
           )}
-        </div>
-      </div>
-
-      <button
-        className={`next-button ${
-          selectedCards.length === 2 ? "active" : "disabled"
-        }`}
+        </SelectedBox>
+      </SelectedCardContainer>
+      <NextButton
+        isActive={selectedCards.length === 2}
         onClick={goToNextPage}
         disabled={selectedCards.length < 2}
       >
         다음으로
-      </button>
-    </div>
+      </NextButton>
+    </Container>
   );
 };
 
 export default SelectCardPage;
+
+// Styled Components
+const Container = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+`;
+
+const SelectionGuide = styled.p`
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 20px;
+`;
+
+const CardScrollContainer = styled.div`
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+`;
+
+const CardScroll = styled.div`
+  display: flex;
+  gap: 8px;
+  width: max-content;
+  padding: 10px;
+`;
+
+const SelectedCardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  position: relative;
+`;
+
+const SelectedBox = styled.div`
+  width: 80px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+  position: relative;
+`;
+
+const Label = styled.span`
+  position: absolute;
+  top: -25px;
+  font-size: 16px;
+  font-weight: bold;
+  background: white;
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: 1px solid #000;
+`;
+
+const SelectedCard = styled.img`
+  width: 70px;
+  height: 105px;
+  object-fit: cover;
+`;
+
+const NextButton = styled.button`
+  display: flex;
+  margin: 20px auto;
+  padding: 10px 40px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: ${(props) => (props.isActive ? "blue" : "gray")};
+  color: white;
+  transition: background-color 0.3s;
+  cursor: ${(props) => (props.isActive ? "pointer" : "not-allowed")};
+`;
