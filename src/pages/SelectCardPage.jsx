@@ -60,7 +60,9 @@ const SelectCardPage = () => {
     <Container>
       <Title>Select Your Tarot Cards</Title>
       <SelectionGuide>
-        Think deeply about your question and select two cards.
+        Think carefully about your question and choose two cards. <br />
+        You can't change the cards you choose, and it's recommended that you
+        only play Tarot once a day.
       </SelectionGuide>
 
       <CardScrollContainer>
@@ -127,6 +129,7 @@ const SelectionGuide = styled.p`
   font-weight: 500;
   color: #cbb3ff;
   margin-bottom: 20px;
+  line-height: 1.6;
 `;
 const CardScrollContainer = styled.div`
   width: 100%;
