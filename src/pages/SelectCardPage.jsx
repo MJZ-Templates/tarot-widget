@@ -118,16 +118,16 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 26px;
+  font-size: 36px;
   font-weight: bold;
-  color: #d4afff;
+  color: #efc94c;
   margin-bottom: 1rem;
 `;
 
 const SelectionGuide = styled.p`
   font-size: 16px;
   font-weight: 500;
-  color: #cbb3ff;
+  color: rgba(239, 201, 76, 0.79);
   margin-bottom: 20px;
   line-height: 1.6;
 `;
@@ -144,7 +144,6 @@ const CardScrollContainer = styled.div`
   border-radius: 12px;
   box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
 
-  scrollbar-width: thin;
   scrollbar-color: #cbb3ff transparent;
 
   &::-webkit-scrollbar {

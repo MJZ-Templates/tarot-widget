@@ -52,13 +52,13 @@ const Container = styled.div`
   color: #e0e0e0;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.15);
+  box-shadow: 0px 4px 12px rgba(255, 215, 0, 0.15);
 `;
 
 const Title = styled.h1`
   font-size: 26px;
   font-weight: bold;
-  color: #d4afff;
+  color: #efc94c;
   margin-bottom: 1rem;
 `;
 
@@ -71,7 +71,7 @@ const InterpretationContainer = styled.div`
 
 const NoCardMessage = styled.p`
   font-size: 18px;
-  color: #cbb3ff;
+  color: #efc94c;
   text-align: center;
 `;
 
@@ -82,7 +82,7 @@ const Card = styled.div`
   border-radius: 12px;
   text-align: center;
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 3px 15px rgba(255, 204, 0, 0.2);
   backdrop-filter: blur(8px);
   position: relative;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -92,7 +92,7 @@ const CardImage = styled.img`
   width: 180px;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0px 3px 8px rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 3px 8px rgba(255, 204, 0, 0.2);
 `;
 
 const CardTitle = styled.h2`
