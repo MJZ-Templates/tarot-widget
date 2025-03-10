@@ -148,10 +148,10 @@ const SelectedBox = styled.div`
   width: 100px;
   height: 150px;
   padding: 12px;
-  border: 2px solid #cbb3ff;
-  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
-  box-shadow: 0px 3px 10px rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 `;
 

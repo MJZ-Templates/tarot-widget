@@ -87,7 +87,7 @@ const Title = styled.h1`
   font-size: 28px;
   font-weight: bold;
   color: #efc94c;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 `;
 
 const ResultContainer = styled.div`
@@ -107,31 +107,20 @@ const NoCardMessage = styled.p`
 const Card = styled.div`
   width: 280px;
   padding: 30px;
-  border: 2px solid #cbb3ff;
+  border: 1px solid rgba(203, 179, 255, 0.3);
   border-radius: 12px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 3px 12px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
   position: relative;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   opacity: 0;
   animation: fadeIn 0.6s ease-in-out forwards;
 
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.3);
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    transform: scale(1.03);
+    box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.2);
   }
 `;
 
@@ -157,16 +146,17 @@ const TagContainer = styled.div`
 `;
 
 const Tag = styled.span`
-  background: rgba(203, 179, 255, 0.3);
+  background: rgba(203, 179, 255, 0.2);
   padding: 6px 12px;
   border-radius: 10px;
   font-size: 14px;
   font-weight: bold;
   color: #e0e0e0;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease-in-out;
 
   &:hover {
-    background: rgba(203, 179, 255, 0.5);
+    background: rgba(203, 179, 255, 0.4);
+    transform: scale(1.05);
   }
 `;
 
