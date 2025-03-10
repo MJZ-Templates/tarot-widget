@@ -11,26 +11,29 @@ const Button = ({ text, onClick, disabled }) => {
 export default Button;
 
 const StyledButton = styled.button`
-  background-color: ${({ disabled }) => (disabled ? "#ccc" : "#6200ea")};
-  color: ${({ disabled }) => (disabled ? "#666" : "#fff")};
-  padding: 10px 20px;
-  font-size: 16px;
+  background: ${({ disabled }) =>
+    disabled ? "#6a6a6a" : "linear-gradient(135deg, #8a2be2, #5e2a84)"};
+  color: ${({ disabled }) => (disabled ? "#a0a0a0" : "#fff")};
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   margin: 20px;
   outline: none;
+  box-shadow: ${({ disabled }) =>
+    disabled ? "none" : "0px 4px 10px rgba(138, 43, 226, 0.5)"};
 
   &:hover {
-    background-color: ${({ disabled }) => (disabled ? "#ccc" : "#3700b3")};
+    background: ${({ disabled }) =>
+      disabled ? "#6a6a6a" : "linear-gradient(135deg, #9b30ff, #682c93)"};
+    box-shadow: ${({ disabled }) =>
+      disabled ? "none" : "0px 6px 12px rgba(138, 43, 226, 0.6)"};
   }
 
   &:focus {
-    outline: none;
-  }
-
-  &:active {
     outline: none;
   }
 `;

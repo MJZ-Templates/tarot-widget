@@ -48,48 +48,62 @@ const Container = styled.div`
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
+  background-color: #1e1037;
+  color: #e0e0e0;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.15);
 `;
 
 const Title = styled.h1`
-  margin: 1rem;
+  font-size: 26px;
+  font-weight: bold;
+  color: #d4afff;
+  margin-bottom: 1rem;
 `;
 
 const InterpretationContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 20px;
+  align-items: center;
+  min-height: 300px;
 `;
 
 const NoCardMessage = styled.p`
   font-size: 18px;
-  color: gray;
+  color: #cbb3ff;
   text-align: center;
 `;
 
 const Card = styled.div`
-  width: 250px;
-  padding: 15px;
-  border: 2px solid #000;
-  border-radius: 10px;
+  width: 280px;
+  padding: 20px;
+  border: 2px solid #cbb3ff;
+  border-radius: 12px;
   text-align: center;
-  background-color: #fff;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
   position: relative;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 `;
 
 const CardImage = styled.img`
-  width: 150px;
+  width: 180px;
   height: auto;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 8px rgba(255, 255, 255, 0.2);
 `;
 
 const CardTitle = styled.h2`
-  font-size: 18px;
-  margin: 10px 0;
+  font-size: 20px;
+  margin: 12px 0;
+  color: #fff;
 `;
 
 const CardDescription = styled.p`
-  font-size: 14px;
-  color: #333;
-  line-height: 1.4;
+  font-size: 16px;
+  color: #d1c3ff;
+  line-height: 1.6;
+  text-align: justify;
 `;

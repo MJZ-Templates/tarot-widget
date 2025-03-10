@@ -3,19 +3,19 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: #1e1037;
+  color: #e0e0e0;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .logo {
   height: 6em;
   padding: 1.5em;
-  will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #b388ff);
 }
 
 @keyframes logo-spin {

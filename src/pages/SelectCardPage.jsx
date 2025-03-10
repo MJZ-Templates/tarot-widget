@@ -59,10 +59,11 @@ const SelectCardPage = () => {
 
   return (
     <Container>
-      <Title>Select Tarot Cards</Title>
+      <Title>Select Your Tarot Cards</Title>
       <SelectionGuide>
-        Think about your concern, and carefully select 2 cards.
+        Think deeply about your question and select two cards.
       </SelectionGuide>
+
       <CardScrollContainer>
         <CardScroll>
           {shuffledCards.map((card) => (
@@ -75,38 +76,19 @@ const SelectCardPage = () => {
           ))}
         </CardScroll>
       </CardScrollContainer>
+
       <SelectedCardContainer>
         <SelectedBox>
           <Label>Present</Label>
           {selectedCards[0] && (
-            <SelectedCard
-              src={tarotBackImage}
-              alt="Selected Tarot Card Back"
-              onClick={() => {
-                if (!toast.isActive("card-toast")) {
-                  toast.warn("Once a card is selected, it cannot be changed.", {
-                    toastId: "card-toast",
-                  });
-                }
-              }}
-            />
+            <SelectedCard src={tarotBackImage} alt="Selected Tarot Card" />
           )}
         </SelectedBox>
 
         <SelectedBox>
           <Label>Future</Label>
           {selectedCards[1] && (
-            <SelectedCard
-              src={tarotBackImage}
-              alt="Selected Tarot Card Back"
-              onClick={() => {
-                if (!toast.isActive("card-toast")) {
-                  toast.warn("Once a card is selected, it cannot be changed.", {
-                    toastId: "card-toast",
-                  });
-                }
-              }}
-            />
+            <SelectedCard src={tarotBackImage} alt="Selected Tarot Card" />
           )}
         </SelectedBox>
       </SelectedCardContainer>
@@ -125,45 +107,68 @@ const SelectCardPage = () => {
 export default SelectCardPage;
 
 const Container = styled.div`
-  max-width: 1280px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: #1e1037;
+  color: #e0e0e0;
+  border-radius: 12px;
 `;
 
 const Title = styled.h1`
-  margin: 1rem;
+  font-size: 26px;
+  font-weight: bold;
+  color: #d4afff;
+  margin-bottom: 1rem;
 `;
 
 const SelectionGuide = styled.p`
-  text-align: center;
   font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  margin-top: 10px;
+  font-weight: 500;
+  color: #cbb3ff;
   margin-bottom: 20px;
 `;
-
 const CardScrollContainer = styled.div`
   width: 100%;
+  height: 220px;
   overflow-x: auto;
-  white-space: nowrap;
-  padding: 10px 0;
-  justify-content: center;
+  overflow-y: hidden;
+  padding: 20px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+
+  scrollbar-width: thin;
+  scrollbar-color: #cbb3ff transparent;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #cbb3ff;
+    border-radius: 10px;
+  }
 `;
 
 const CardScroll = styled.div`
   display: flex;
-  width: max-content;
+  flex-wrap: nowrap;
+  gap: 12px;
   padding: 10px;
+  min-width: fit-content;
+  width: max-content;
 `;
 
 const SelectedCardContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 50px;
   margin-top: 30px;
-  position: relative;
 `;
 
 const SelectedBox = styled.div`
@@ -171,28 +176,30 @@ const SelectedBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90px;
-  height: 120px;
-  padding: 10px;
-  gap: 6px;
-  border: 2px solid #000;
-  border-radius: 10px;
+  width: 100px;
+  height: 150px;
+  padding: 12px;
+  border: 2px solid #cbb3ff;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0px 3px 10px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
 `;
 
 const Label = styled.span`
-  position: absolute;
-  top: -15px;
-  background: white;
   font-size: 16px;
   font-weight: bold;
-  padding: 5px 8px;
-  border-radius: 5px;
-  border: 1px solid #000;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  border-radius: 8px;
 `;
 
 const SelectedCard = styled.img`
-  width: 70px;
-  height: 105px;
+  width: 80px;
+  height: 120px;
   object-fit: contain;
-  padding: 20px 16px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease;
 `;

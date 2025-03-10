@@ -20,7 +20,7 @@ const ResultPage = () => {
 
   return (
     <Container>
-      <Title>Results</Title>
+      <Title>Tarot Reading Results</Title>
       {selectedCards.length === 2 ? (
         <>
           <ResultContainer>
@@ -38,8 +38,9 @@ const ResultPage = () => {
               </TagContainer>
               <CardDescription>
                 {selectedCards[0].interpretation}
-              </CardDescription>
+              </CardDescription>{" "}
             </Card>
+
             <Card>
               <CardLabel>Future</CardLabel>
               <CardImage
@@ -54,7 +55,7 @@ const ResultPage = () => {
               </TagContainer>
               <CardDescription>
                 {selectedCards[1].interpretation}
-              </CardDescription>
+              </CardDescription>{" "}
             </Card>
           </ResultContainer>
           <Button text="Select Again" onClick={handleGoHome} />
@@ -69,61 +70,96 @@ const ResultPage = () => {
 export default ResultPage;
 
 const Container = styled.div`
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
+  background-color: #1e1037;
+  color: #e0e0e0;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.15);
 `;
 
 const Title = styled.h1`
-  margin: 1rem;
+  font-size: 28px;
+  font-weight: bold;
+  color: #d4afff;
+  margin-bottom: 1.5rem;
 `;
 
 const ResultContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 50px;
   margin-top: 20px;
+  flex-wrap: wrap;
 `;
 
 const NoCardMessage = styled.p`
   font-size: 18px;
-  color: gray;
+  color: #cbb3ff;
   text-align: center;
 `;
 
 const Card = styled.div`
-  width: 250px;
-  padding: 15px;
-  border: 2px solid #000;
-  border-radius: 10px;
+  width: 280px;
+  padding: 30px;
+  border: 2px solid #cbb3ff;
+  border-radius: 12px;
   text-align: center;
-  background-color: #fff;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
   position: relative;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-in-out forwards;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.3);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 const CardLabel = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  top: -15px;
+  top: -19px;
   left: 50%;
   transform: translateX(-50%);
-  background: white;
-  padding: 5px 10px;
+  background: #5e2a84;
+  padding: 6px 12px;
+  border: 2px solid #cbb3ff;
+  border-radius: 8px;
+  color: #ffffff;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 5px;
-  border: 1px solid #000;
 `;
 
 const CardImage = styled.img`
-  width: 100%;
+  width: 180px;
   height: auto;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 8px rgba(255, 255, 255, 0.2);
 `;
 
 const CardTitle = styled.h2`
-  font-size: 18px;
-  margin: 10px 0;
+  font-size: 20px;
+  margin: 12px 0;
+  color: #fff;
 `;
 
 const TagContainer = styled.div`
@@ -135,16 +171,22 @@ const TagContainer = styled.div`
 `;
 
 const Tag = styled.span`
-  background: #f0f0f0;
-  padding: 5px 10px;
+  background: rgba(203, 179, 255, 0.3);
+  padding: 6px 12px;
   border-radius: 10px;
   font-size: 14px;
   font-weight: bold;
-  color: #333;
+  color: #e0e0e0;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: rgba(203, 179, 255, 0.5);
+  }
 `;
 
 const CardDescription = styled.p`
-  font-size: 14px;
-  color: #333;
-  line-height: 1.4;
+  font-size: 16px;
+  color: #d1c3ff;
+  line-height: 1.6;
+  text-align: justify;
 `;
