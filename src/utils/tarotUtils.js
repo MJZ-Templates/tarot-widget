@@ -176,3 +176,20 @@ export const TAROT_CARD_LIST = [
     tag: ["completion", "fulfillment", "achievement"],
   },
 ];
+
+function getTodayUTCString() {
+  const now = new Date();
+  const year = now.getUTCFullYear();
+  const month = String(now.getUTCMonth() + 1).padStart(2, "0");
+  const date = String(now.getUTCDate()).padStart(2, "0");
+
+  return `${year}-${month}-${date}`;
+}
+
+function hasViewedTarotToday() {
+  const todayString = getTodayUTCString();
+  const lastViewedDate = localStorage.getItem("lastTarotViewedDate");
+  return lastViewedDate === todayString;
+}
+
+export { getTodayUTCString, hasViewedTarotToday };

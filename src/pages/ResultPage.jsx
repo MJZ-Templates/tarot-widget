@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Button, CardLabel } from "../components";
+import { CardLabel } from "../components";
+import { getTodayUTCString } from "../utils/tarotUtils";
 
 const ResultPage = () => {
   const [selectedCards, setSelectedCards] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const storedCards = JSON.parse(localStorage.getItem("selectedTarotCards"));
-    if (storedCards) {
+    if (storedCards && storedCards.length === 2) {
       setSelectedCards(storedCards);
     }
-  }, []);
 
-  const handleGoHome = () => {
-    navigate("/");
-  };
+    const todayString = getTodayUTCString();
+    const lastViewedDate = localStorage.getItem("lastTarotViewedDate");
+
+    if (lastViewedDate !== todayString) {
+      localStorage.setItem("lastTarotViewedDate", todayString);
+    }
+  }, []);
 
   return (
     <Container>
@@ -38,7 +40,7 @@ const ResultPage = () => {
               </TagContainer>
               <CardDescription>
                 {selectedCards[0].interpretation}
-              </CardDescription>{" "}
+              </CardDescription>
             </Card>
 
             <Card>
@@ -55,13 +57,12 @@ const ResultPage = () => {
               </TagContainer>
               <CardDescription>
                 {selectedCards[1].interpretation}
-              </CardDescription>{" "}
+              </CardDescription>
             </Card>
           </ResultContainer>
           <RetryMessage>
             Come back tomorrow for another tarot reading 👋
           </RetryMessage>
-          <Button text="Select Again" onClick={handleGoHome} />
         </>
       ) : (
         <NoCardMessage>No selected cards.</NoCardMessage>
@@ -117,11 +118,6 @@ const Card = styled.div`
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   opacity: 0;
   animation: fadeIn 0.6s ease-in-out forwards;
-
-  &:hover {
-    transform: scale(1.03);
-    box-shadow: 0px 6px 20px rgba(255, 255, 255, 0.2);
-  }
 `;
 
 const CardImage = styled.img`
