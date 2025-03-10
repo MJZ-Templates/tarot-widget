@@ -136,7 +136,7 @@ const CardScrollContainer = styled.div`
   height: 220px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 20px 0;
+  padding: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
