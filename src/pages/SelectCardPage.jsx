@@ -65,19 +65,6 @@ const SelectCardPage = () => {
         only play Tarot once a day.
       </SelectionGuide>
 
-      <CardScrollContainer>
-        <CardScroll>
-          {shuffledCards.map((card) => (
-            <Card
-              key={card.name}
-              backImage={tarotBackImage}
-              onSelect={() => selectCard(card)}
-              isPlaced={selectedCards.some((c) => c.name === card.name)}
-            />
-          ))}
-        </CardScroll>
-      </CardScrollContainer>
-
       <SelectedCardContainer>
         <SelectedBox>
           <CardLabel text="Present" />
@@ -93,6 +80,19 @@ const SelectCardPage = () => {
           )}
         </SelectedBox>
       </SelectedCardContainer>
+
+      <CardScrollContainer>
+        <CardScroll>
+          {shuffledCards.map((card) => (
+            <Card
+              key={card.name}
+              backImage={tarotBackImage}
+              onSelect={() => selectCard(card)}
+              isPlaced={selectedCards.some((c) => c.name === card.name)}
+            />
+          ))}
+        </CardScroll>
+      </CardScrollContainer>
 
       <Button
         text="Next"
@@ -131,45 +131,12 @@ const SelectionGuide = styled.p`
   margin-bottom: 20px;
   line-height: 1.6;
 `;
-const CardScrollContainer = styled.div`
-  width: 100%;
-  height: 220px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 20px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
-
-  scrollbar-color: #cbb3ff transparent;
-
-  &::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #cbb3ff;
-    border-radius: 10px;
-  }
-`;
-
-const CardScroll = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 12px;
-  padding: 10px;
-  min-width: fit-content;
-  width: max-content;
-`;
 
 const SelectedCardContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 50px;
-  margin-top: 30px;
+  margin: 40px 0 30px;
 `;
 
 const SelectedBox = styled.div`
@@ -195,4 +162,37 @@ const SelectedCard = styled.img`
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.3);
   transition: transform 0.3s ease;
+`;
+
+const CardScrollContainer = styled.div`
+  width: 100%;
+  height: 220px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+  scrollbar-color: #cbb3ff transparent;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #cbb3ff;
+    border-radius: 10px;
+  }
+`;
+
+const CardScroll = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+  padding: 10px;
+  min-width: fit-content;
+  width: max-content;
 `;

@@ -21,7 +21,7 @@ const StyledButton = styled.button`
   border-radius: 8px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: all 0.3s ease;
-  margin: 20px;
+  margin-top: 30px;
   outline: none;
   box-shadow: ${({ disabled }) =>
     disabled ? "none" : "0px 4px 10px rgba(138, 43, 226, 0.5)"};
