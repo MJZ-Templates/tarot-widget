@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { Button, Card, CardLabel } from "../components";
 import tarotBackImage from "../assets/images-tarot-cards/tarot-card-back.png";
 import { TAROT_CARD_LIST, hasViewedTarotToday } from "../utils/tarotUtils";
@@ -24,11 +22,8 @@ const SelectCardPage = () => {
     setShuffledCards(shuffleArray(TAROT_CARD_LIST));
 
     if (hasViewedTarotToday()) {
-      toast.warn(
-        "You have already completed today's tarot reading. Please come back tomorrow.",
-        {
-          toastId: "card-toast",
-        }
+      alert(
+        "You have already completed today's tarot reading. Please come back tomorrow."
       );
       setCanSelectCards(false);
     }
@@ -36,6 +31,9 @@ const SelectCardPage = () => {
 
   const selectCard = (card) => {
     if (!canSelectCards) {
+      alert(
+        "You have already completed today's tarot reading. Please come back tomorrow."
+      );
       return;
     }
 
@@ -43,11 +41,7 @@ const SelectCardPage = () => {
       selectedCards.length >= 2 ||
       selectedCards.some((c) => c.name === card.name)
     ) {
-      if (!toast.isActive("card-toast")) {
-        toast.warn("Once a card is selected, it cannot be changed.", {
-          toastId: "card-toast",
-        });
-      }
+      alert("Once a card is selected, it cannot be changed.");
       return;
     }
 
@@ -112,10 +106,8 @@ const SelectCardPage = () => {
       <Button
         text="Next"
         onClick={goToNextPage}
-        disabled={selectedCards.length < 2 || !canSelectCards} // 버튼 비활성화
+        disabled={selectedCards.length < 2 || !canSelectCards}
       />
-
-      <ToastContainer position="top-center" autoClose={2000} />
     </Container>
   );
 };

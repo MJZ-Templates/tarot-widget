@@ -164,7 +164,7 @@ const CardDescription = styled.p`
 `;
 
 const RetryMessage = styled.p`
-  font-size: 16px;
+  font-size: 20px;
   color: #cbb3ff;
   margin: 30px 0 0;
 `;
