@@ -59,7 +59,7 @@ const SelectCardPage = () => {
 
   return (
     <Container>
-      <h1>Select Tarot Cards</h1>
+      <Title>Select Tarot Cards</Title>
       <SelectionGuide>
         Think about your concern, and carefully select 2 cards.
       </SelectionGuide>
@@ -131,6 +131,10 @@ const Container = styled.div`
   text-align: center;
 `;
 
+const Title = styled.h1`
+  margin: 1rem;
+`;
+
 const SelectionGuide = styled.p`
   text-align: center;
   font-size: 16px;
@@ -150,7 +154,6 @@ const CardScrollContainer = styled.div`
 
 const CardScroll = styled.div`
   display: flex;
-  gap: 8px;
   width: max-content;
   padding: 10px;
 `;
@@ -178,10 +181,13 @@ const SelectedBox = styled.div`
 
 const Label = styled.span`
   position: absolute;
-  top: -35px;
+  top: -15px;
+  background: white;
   font-size: 16px;
   font-weight: bold;
   padding: 5px 8px;
+  border-radius: 5px;
+  border: 1px solid #000;
 `;
 
 const SelectedCard = styled.img`

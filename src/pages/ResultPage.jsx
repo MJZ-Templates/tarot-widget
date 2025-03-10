@@ -71,13 +71,11 @@ export default ResultPage;
 const Container = styled.div`
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
   text-align: center;
 `;
 
 const Title = styled.h1`
-  font-size: 24px;
-  margin-bottom: 20px;
+  margin: 1rem;
 `;
 
 const ResultContainer = styled.div`

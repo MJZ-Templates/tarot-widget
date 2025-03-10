@@ -47,13 +47,11 @@ export default InterpretationPage;
 const Container = styled.div`
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
   text-align: center;
 `;
 
 const Title = styled.h1`
-  font-size: 24px;
-  margin-bottom: 20px;
+  margin: 1rem;
 `;
 
 const InterpretationContainer = styled.div`
@@ -80,7 +78,7 @@ const Card = styled.div`
 `;
 
 const CardImage = styled.img`
-  width: 100%;
+  width: 150px;
   height: auto;
   border-radius: 5px;
 `;
