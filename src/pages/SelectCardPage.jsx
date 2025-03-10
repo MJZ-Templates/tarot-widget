@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Card from "../components/Card";
-import Button from "../components/Button";
+import { Button, Card, CardLabel } from "../components";
 import tarotBackImage from "../assets/images-tarot-cards/tarot-card-back.png";
 import { TAROT_CARD_LIST } from "../utils/tarotUtils";
 
@@ -79,14 +78,14 @@ const SelectCardPage = () => {
 
       <SelectedCardContainer>
         <SelectedBox>
-          <Label>Present</Label>
+          <CardLabel text="Present" />
           {selectedCards[0] && (
             <SelectedCard src={tarotBackImage} alt="Selected Tarot Card" />
           )}
         </SelectedBox>
 
         <SelectedBox>
-          <Label>Future</Label>
+          <CardLabel text="Future" />
           {selectedCards[1] && (
             <SelectedCard src={tarotBackImage} alt="Selected Tarot Card" />
           )}
@@ -176,6 +175,7 @@ const SelectedBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative; /* 내부 요소의 absolute 배치 적용 */
   width: 100px;
   height: 150px;
   padding: 12px;
@@ -184,15 +184,6 @@ const SelectedBox = styled.div`
   border-radius: 12px;
   box-shadow: 0px 3px 10px rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
-`;
-
-const Label = styled.span`
-  font-size: 16px;
-  font-weight: bold;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 5px 10px;
-  border-radius: 8px;
 `;
 
 const SelectedCard = styled.img`

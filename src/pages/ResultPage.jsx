@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Button from "../components/Button";
+import { Button, CardLabel } from "../components";
 
 const ResultPage = () => {
   const [selectedCards, setSelectedCards] = useState([]);
@@ -25,7 +25,7 @@ const ResultPage = () => {
         <>
           <ResultContainer>
             <Card>
-              <CardLabel>Present</CardLabel>
+              <CardLabel text="Present" />
               <CardImage
                 src={selectedCards[0].image}
                 alt={selectedCards[0].name}
@@ -42,7 +42,7 @@ const ResultPage = () => {
             </Card>
 
             <Card>
-              <CardLabel>Future</CardLabel>
+              <CardLabel text="Future" />
               <CardImage
                 src={selectedCards[1].image}
                 alt={selectedCards[1].name}
@@ -130,23 +130,6 @@ const Card = styled.div`
       transform: translateY(0);
     }
   }
-`;
-
-const CardLabel = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: -19px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #5e2a84;
-  padding: 6px 12px;
-  border: 2px solid #cbb3ff;
-  border-radius: 8px;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: bold;
 `;
 
 const CardImage = styled.img`
