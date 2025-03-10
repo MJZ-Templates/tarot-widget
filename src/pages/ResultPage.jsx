@@ -58,6 +58,9 @@ const ResultPage = () => {
               </CardDescription>{" "}
             </Card>
           </ResultContainer>
+          <RetryMessage>
+            Come back tomorrow for another tarot reading 👋
+          </RetryMessage>
           <Button text="Select Again" onClick={handleGoHome} />
         </>
       ) : (
@@ -172,4 +175,10 @@ const CardDescription = styled.p`
   color: #d1c3ff;
   line-height: 1.6;
   text-align: justify;
+`;
+
+const RetryMessage = styled.p`
+  font-size: 16px;
+  color: #cbb3ff;
+  margin: 30px 0 0;
 `;

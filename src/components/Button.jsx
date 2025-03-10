@@ -14,7 +14,7 @@ const StyledButton = styled.button`
   background: ${({ disabled }) =>
     disabled ? "#6a6a6a" : "linear-gradient(135deg, #8a2be2, #5e2a84)"};
   color: ${({ disabled }) => (disabled ? "#a0a0a0" : "#fff")};
-  padding: 12px 24px;
+  padding: 12px 50px;
   font-size: 18px;
   font-weight: bold;
   border: none;

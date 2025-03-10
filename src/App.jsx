@@ -1,7 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SelectCardPage from "./pages/SelectCardPage";
-import InterpretationPage from "./pages/InterpretationPage";
-import ResultPage from "./pages/ResultPage";
+import { ResultPage, InterpretationPage, SelectCardPage } from "./pages";
 import "./App.css";
 
 function App() {
