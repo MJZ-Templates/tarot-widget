@@ -178,7 +178,7 @@ const SelectedBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative; /* 내부 요소의 absolute 배치 적용 */
+  position: relative;
   width: 100px;
   height: 150px;
   padding: 12px;

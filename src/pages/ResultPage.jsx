@@ -136,7 +136,7 @@ const Card = styled.div`
 `;
 
 const CardImage = styled.img`
-  width: 180px;
+  width: 150px;
   height: auto;
   border-radius: 8px;
   box-shadow: 0px 3px 8px rgba(255, 255, 255, 0.2);
