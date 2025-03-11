@@ -186,10 +186,4 @@ function getTodayUTCString() {
   return `${year}-${month}-${date}`;
 }
 
-function hasViewedTarotToday() {
-  const todayString = getTodayUTCString();
-  const lastViewedDate = localStorage.getItem("lastTarotViewedDate");
-  return lastViewedDate === todayString;
-}
-
-export { getTodayUTCString, hasViewedTarotToday };
+export { getTodayUTCString };

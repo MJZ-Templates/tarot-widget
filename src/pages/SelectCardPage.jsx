@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Button, Card, CardLabel } from "../components";
 import tarotBackImage from "../assets/images-tarot-cards/tarot-card-back.png";
-import { TAROT_CARD_LIST, hasViewedTarotToday } from "../utils/tarotUtils";
+import { TAROT_CARD_LIST } from "../utils/tarotUtils";
 
 const shuffleArray = (array) => {
   return array
@@ -15,28 +15,13 @@ const shuffleArray = (array) => {
 const SelectCardPage = () => {
   const [selectedCards, setSelectedCards] = useState([]);
   const [shuffledCards, setShuffledCards] = useState([]);
-  const [canSelectCards, setCanSelectCards] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     setShuffledCards(shuffleArray(TAROT_CARD_LIST));
-
-    if (hasViewedTarotToday()) {
-      alert(
-        "You have already completed today's tarot reading. Please come back tomorrow."
-      );
-      setCanSelectCards(false);
-    }
   }, []);
 
   const selectCard = (card) => {
-    if (!canSelectCards) {
-      alert(
-        "You have already completed today's tarot reading. Please come back tomorrow."
-      );
-      return;
-    }
-
     if (
       selectedCards.length >= 2 ||
       selectedCards.some((c) => c.name === card.name)
@@ -106,7 +91,7 @@ const SelectCardPage = () => {
       <Button
         text="Next"
         onClick={goToNextPage}
-        disabled={selectedCards.length < 2 || !canSelectCards}
+        disabled={selectedCards.length < 2}
       />
     </Container>
   );
