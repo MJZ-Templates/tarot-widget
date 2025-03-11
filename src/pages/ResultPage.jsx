@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CardLabel } from "../components";
-import { getTodayUTCString } from "../utils/tarotUtils";
 
 const ResultPage = () => {
   const [selectedCards, setSelectedCards] = useState([]);
@@ -10,13 +9,6 @@ const ResultPage = () => {
     const storedCards = JSON.parse(localStorage.getItem("selectedTarotCards"));
     if (storedCards && storedCards.length === 2) {
       setSelectedCards(storedCards);
-    }
-
-    const todayString = getTodayUTCString();
-    const lastViewedDate = localStorage.getItem("lastTarotViewedDate");
-
-    if (lastViewedDate !== todayString) {
-      localStorage.setItem("lastTarotViewedDate", todayString);
     }
   }, []);
 
